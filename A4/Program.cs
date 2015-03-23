@@ -6,6 +6,8 @@ namespace A4
     {
         private static void Main(string[] args)
         {
+            //Child in a Parent container!
+
             ParentA a = new ChildA();
             a.DoSomething();
 
