@@ -31,8 +31,8 @@ namespace A2
             _test2Time = watch.ElapsedMilliseconds;
             watch.Reset();
 
-            Console.WriteLine("Building " + Vertexcount + " struct bases vertices took " + _test1Time + " milliseconds.");
-            Console.WriteLine("Building " + Vertexcount + " class bases vertices took " + _test2Time + " milliseconds.");
+            Console.WriteLine("Building " + Vertexcount + " struct based vertices took " + _test1Time + " milliseconds.");
+            Console.WriteLine("Building " + Vertexcount + " class based vertices took " + _test2Time + " milliseconds.");
 
             Console.ReadKey();
         }
