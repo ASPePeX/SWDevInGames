@@ -34,6 +34,8 @@ namespace A2
             Console.WriteLine("Building " + Vertexcount + " struct based vertices took " + _test1Time + " milliseconds.");
             Console.WriteLine("Building " + Vertexcount + " class based vertices took " + _test2Time + " milliseconds.");
 
+            Console.WriteLine("Structs were " + _test2Time/_test1Time + " times faster.");
+
             Console.ReadKey();
         }
 

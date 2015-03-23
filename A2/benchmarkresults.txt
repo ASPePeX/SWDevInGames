@@ -1,0 +1,9 @@
+﻿x64:
+Building 10000000 struct based vertices took 2659 milliseconds.
+Building 10000000 class based vertices took 7343 milliseconds.
+Structs were 2,76156449793155 times faster.
+
+x32:
+Building 10000000 struct based vertices took 2263 milliseconds.
+Building 10000000 class based vertices took 9114 milliseconds.
+Structs were 4,02739726027397 times faster.
