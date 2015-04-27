@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.Reflection;
 
 namespace DepInjMEFCalculator
 {
@@ -12,6 +12,7 @@ namespace DepInjMEFCalculator
         int Operate(int a, int b);
     }
 
+    [Export(typeof(IOperation))]
     public class OpPlus : IOperation
     {
         public char Symbol { get { return '+'; } }
@@ -21,6 +22,7 @@ namespace DepInjMEFCalculator
         }
     }
 
+    [Export(typeof(IOperation))]
     public class OpMinus : IOperation
     {
         public char Symbol { get { return '-'; } }
@@ -30,6 +32,7 @@ namespace DepInjMEFCalculator
         }
     }
 
+    [Export(typeof(IOperation))]
     public class OpMult : IOperation
     {
         public char Symbol { get { return '*'; } }
@@ -38,6 +41,8 @@ namespace DepInjMEFCalculator
             return a * b;
         }
     }
+
+    [Export(typeof(IOperation))]
     public class OpDiv : IOperation
     {
         public char Symbol { get { return '/'; } }
@@ -51,8 +56,9 @@ namespace DepInjMEFCalculator
 
     class Calculator
     {
+        [ImportMany(typeof(IOperation))]
         public List<IOperation> operations;
-
+        
         public string Calculate(string input)
         {
             int left;
@@ -96,9 +102,18 @@ namespace DepInjMEFCalculator
     {
         static void Main(string[] args)
         {
+            var catalog = new AggregateCatalog();
+            catalog.Catalogs.Add(new AssemblyCatalog(typeof(Program).Assembly));
+            catalog.Catalogs.Add(new DirectoryCatalog("."));
+            CompositionContainer container = new CompositionContainer(catalog);
+            
             Calculator calc = new Calculator();
 
-            calc.operations = new List<IOperation>(new IOperation[] { new OpPlus(), new OpMinus(), new OpMult(), new OpDiv()});
+            container.ComposeParts(calc);
+
+
+
+            //calc.operations = new List<IOperation>(new IOperation[] { new OpPlus(), new OpMinus(), new OpMult(), new OpDiv()});
 
             String s;
             Console.WriteLine("Enter Command:");
