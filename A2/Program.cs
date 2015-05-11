@@ -6,7 +6,7 @@ namespace A2
 {
     internal class Program
     {
-        private const int Vertexcount = 1000000;
+        private const int Vertexcount = 5000000;
         private static vertexS[] _verticesS;
         private static vertexC[] _verticesC;
         private static vertexS[] _verticesSp;
@@ -59,8 +59,8 @@ namespace A2
 
             Console.WriteLine("");
 
-            Console.WriteLine("Building " + Vertexcount + " struct based vertices took " + _test3Time + " milliseconds.");
-            Console.WriteLine("Building " + Vertexcount + " class based vertices took " + _test4Time + " milliseconds.");
+            Console.WriteLine("Building " + Vertexcount + " struct based vertices took " + _test3Time + " milliseconds. (Parallel)");
+            Console.WriteLine("Building " + Vertexcount + " class based vertices took " + _test4Time + " milliseconds. (Parallel)");
 
             Console.WriteLine("Structs were " + _test4Time / _test3Time + " times faster.");
 
