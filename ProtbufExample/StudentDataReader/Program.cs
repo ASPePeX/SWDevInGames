@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.PerformanceData;
 using System.IO;
-using System.Xml;
 using StudentTypes;
 
 namespace StudentDataReader
 {
-
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Read the students 
             StudentRecord theStudents;
             var studentSerializer = new StudentSerializer();
-            theStudents = (StudentRecord) studentSerializer.Deserialize(new FileStream("Data.students", FileMode.Open), null, typeof(StudentRecord));
+            theStudents = (StudentRecord) studentSerializer.Deserialize(new FileStream("Data.students", FileMode.Open), null, typeof (StudentRecord));
 
             foreach (var student in theStudents.TheStudents)
             {

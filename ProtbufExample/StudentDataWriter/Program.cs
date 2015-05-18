@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml;
 using StudentTypes;
 
 namespace StudentDataWriter
 {
-
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            StudentRecord theStudents = new StudentRecord();
+            var theStudents = new StudentRecord();
             theStudents.TheStudents = new List<Student>();
 
             for (;;)
@@ -28,10 +26,10 @@ namespace StudentDataWriter
                 studi.MatNumber = Console.ReadLine();
 
                 studi.CourseList = new List<Course>();
-                for (; ; )
+                for (;;)
                 {
                     Console.WriteLine("Enter new course for " + studi.FirstName + " " + studi.LastName + " or \"exit\" to cancel");
-                    Course course = new Course();
+                    var course = new Course();
                     Console.Write("Course Name: ");
                     course.Name = Console.ReadLine();
                     if (course.Name == "exit")
